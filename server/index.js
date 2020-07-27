@@ -1,13 +1,13 @@
 const express = require('express')
 const products = require('../products.json')
+const getProducts = require('./getProducts');
+const getProduct = require('./getProduct');
 app = express()
 
 const port = 4041
 
 app.listen(port, () => console.log(`Server listening on port ${port}`))
 
-app.get(`/api/products`, (req, res) => {
-    res.status(200).send(products)
-})
+app.get(`/api/products`, getProducts)
 
-//this is a useless comment
+app.get(`/api/product/:id`, getProduct)
